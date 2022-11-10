@@ -1,0 +1,132 @@
+<html>
+
+<head>
+
+    <title>Crud Application</title>
+    <link href="{{url_for('static', filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
+<link rel="shortcut icon" href="{{url_for('static', filename = 'teacher.png' )}}">
+<style>
+    .container{
+      padding-top:20px;
+      border:1px solid red;
+      
+    }
+    #flex{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+       
+        
+    }
+    #flex div a{
+        padding:20px;
+        background-color: rgb(133, 245, 133);
+    }
+    #flex div h1{
+        border:2px solid rgb(133, 245, 133);
+        margin-top:16px;
+    }
+    #flex div a button{
+        border:none;
+        outline:none;
+        background-color: transparent;
+        font-size:15px;
+        color:black;
+        letter-spacing: 0.1em;
+    }
+    #flex div .todays{
+        padding-top:-15px;
+        background-color: rgb(247, 170, 55);
+    }
+    #flex div .todayscount{
+        border:2px solid rgb(247, 170, 55);
+        margin-top:16px;
+    }
+    #flex div .inque{
+        padding:20px;
+        background-color: rgb(55, 193, 247);
+    }
+    #flex div .inquecount{
+        border:2px solid rgb(55, 193, 247);
+        margin-top:16px;
+    }
+    #myDiv{
+        font-size: 20px;
+    }
+#img img{
+    width:200px;
+    height: auto;
+    border:1px solid red;
+}
+</style>
+
+</head>
+
+<body>
+
+
+<div class="container">
+
+    <div class="well text-center">
+
+        <div id="flex">
+            <div>
+                <a ><button>COMPLETED</button></a>
+                <h1>20</h1>
+            </div>
+            <div>
+                <a class="todays"><button>TODAYS</button></a>
+                <h1 class="todayscount">10</h1>
+            </div>
+            <div>
+                <a class="inque"><button>IN QUE</button></a>
+                <h1 class="inquecount">05</h1>
+            </div>
+            <div>
+                <div id="myDiv"></div>
+                <form>
+                    <input type="date">
+                </form>
+            </div>
+            <div id="img">
+                <img src="/static/logo.png" alt="img">
+            </div>
+        </div>
+
+<script>
+
+function showDateTime() {
+  var myDiv = document.getElementById("myDiv");
+
+  var date = new Date();
+  var dayList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  var monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  var dayName = dayList[date.getDay()];
+  var monthName = monthNames[date.getMonth()];
+  var today = ` ${monthName} ${date.getDate()} ${date.getFullYear()}`;
+
+  var hour = date.getHours();
+  var min = date.getMinutes();
+  var sec = date.getSeconds();
+
+  var time = hour + ":" + min + ":" + sec;
+  myDiv.innerText = `  ${today}.`;
+}
+setInterval(showDateTime, 1000);
+
+</script>
+    </div>
+</body>
